@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 		<link rel="stylesheet" href="styles.css"/>
 		<noscript><link rel="stylesheet" href="noscript.css"/></noscript>
-		<script src="script.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -16,17 +15,13 @@
 					Git Tattoo
 				</h1>
 				<p>
-					Custom, removable "tattoos" for your GitHub homepage. Discreet options available.
+					Custom, removable "tattoos" for your GitHub homepage.
 				</p>
 			</div>
-			<div id="presets">
-				<p>
-					Implement: horizontally-scrolling list of presets...
-				</p>
+			<div id="preset-grid">
 			</div>
 			<div id="git-grid">
-				<svg width="738" height="88" class="js-calendar-graph-svg">
-				  <g transform="translate(0, 0)">
+				<svg width="738" height="88" id="svg">
 			      <g transform="translate(0, 0)">
 			          <rect class="day" width="10" height="10" y="00" fill="#ebedf0" onclick="increment(this)"/>
 			          <rect class="day" width="10" height="10" y="13" fill="#ebedf0" onclick="increment(this)"/>
@@ -508,7 +503,7 @@
 				</svg>
 			</div>
 			<div id="pay">
-				<button id="button" onclick="pay()">
+				<button class="button" onclick="pay()">
 					Tattoo me
 				</button>
 			</div>
@@ -518,5 +513,6 @@
 				</p>
 			</div>
 		</div>
+		<script src="script.js"></script>
 	</body>
 </html>
