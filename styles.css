@@ -37,12 +37,12 @@ p {
 	text-align: center;
 }
 
-#preset-grid {
+#presets {
 	width: 738px;
 	height: 40px;
 	margin: 0 auto;
 
-	/* side-scrolling */	
+	/* side-scrolling */
     overflow-x: auto;
     white-space: nowrap;
 

@@ -12,12 +12,12 @@
 */
 
 color_map = {
-		0: "#ebedf0",
-		1: "#9be9a8",
-		2: "#40c463",
-		3: "#30a14e",
-		4: "#216e39",
-	}
+  0: "#ebedf0",
+  1: "#9be9a8",
+  2: "#40c463",
+  3: "#30a14e",
+  4: "#216e39",
+}
 
 preset_map = {
 	"HIRE ME": new Array(371).fill(0),
@@ -31,17 +31,26 @@ preset_map = {
 }
 
 /* Advances stored color for rect x */
-function increment(x) {
-	if (typeof x.getAttribute("data-count") != "string") {
-		x.setAttribute("data-count", 0);
+function increment(rect, overflow) {
+	let coloridx = parseInt(rect.getAttribute("data-coloridx")) + 1;
+
+	if (overflow) {
+  	coloridx = coloridx % Object.keys(color_map).length;
+	} else {
+  	coloridx = Math.min(coloridx, Object.keys(color_map).length - 1);
 	}
-	let count = (parseInt(x.getAttribute("data-count")) + 1) % 5;
-	x.setAttribute("data-count", count);
-	x.style.fill = color_map[count];
+
+	rect.setAttribute("data-coloridx", coloridx);
+	rect.style.fill = color_map[coloridx];
+}
+
+function clear(rect) {
+  rect.style.fill = color_map[0];
+  rect.setAttribute("data-coloridx", 0);
 }
 
 function apply_preset(key) {
-	let svg = document.getElementById("svg");
+	let svg = document.getElementById("git-grid");
 	let i = 0;
 	for (let g of svg.childNodes) {
 		if (g.nodeName != "#text") {
@@ -56,12 +65,12 @@ function apply_preset(key) {
 }
 
 function create_presets() {
-	let preset_grid = document.getElementById("preset-grid"); 
+	let preset_grid = document.getElementById("presets");
 	for (let [key, value] of Object.entries(preset_map)) {
 		// make and attach a "preset" div
 		let preset = document.createElement("div");
 		preset.classList.add("preset");
-		preset_grid.appendChild(preset)
+		preset_grid.appendChild(preset);
 
 		// make and attach a button
 		let button = document.createElement("button");
@@ -70,15 +79,15 @@ function create_presets() {
 		let text = document.createTextNode(key);
 		button.appendChild(text);
 		// attach an onclick function
-		button.onclick = () => apply_preset(key)
-		preset.appendChild(button)		
+		button.onclick = () => apply_preset(key);
+		preset.appendChild(button);
 	}
 }
 
 function generate_svg() {
-	let git_grid = document.getElementById("git-grid"); 
+	let git_grid = document.getElementById("git-grid-div");
 	let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-	svg.id = "svg";
+	svg.id = "git-grid";
 	svg.style.height = "88px";
 	svg.style.width = "738px";
 	for (let x = 0; x <= 728; x+=14) {
@@ -89,8 +98,26 @@ function generate_svg() {
 			rect.style.height = "10px";
 			rect.style.width = "10px";
 			rect.style.y = y + "px";
-			rect.style.fill = "#ebedf0";
-			rect.onclick = () => increment(rect);
+			rect.setAttribute("data-coloridx", 0);
+			rect.style.fill = color_map[0];
+			rect.onclick = (e) => {
+   			if (!e.shiftKey) {
+    			increment(rect, true /* overflow */);
+   			} else {
+     			clear(rect);
+   			}
+			}
+
+			rect.addEventListener("mouseenter", (e) => {
+  			if (e.buttons !== 1) {
+    			return;
+  			}
+  			if (!e.shiftKey) {
+    			increment(rect, false /* overflow */);
+   			} else if (e.shiftKey) {
+     			clear(rect);
+  			}
+			});
 			rect.classList.add("day");
 			g.appendChild(rect);
 		}
