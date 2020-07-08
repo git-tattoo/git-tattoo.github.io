@@ -1,3 +1,4 @@
+
 /* 	Color reference chart:
 	0: #ebedf0
 	1: #c6e48b -> #9be9a8
@@ -20,13 +21,13 @@ color_map = {
 
 preset_map = {
 	"HIRE ME": new Array(371).fill(0),
-	"RANDOM 1": new Array(53).fill(new Array(7).fill(0)),
-	"RANDOM 2": new Array(53).fill(new Array(7).fill(0)),
-	"RANDOM 3": new Array(53).fill(new Array(7).fill(0)),
-	"RANDOM 4": new Array(53).fill(new Array(7).fill(0)),
-	"RANDOM 5": new Array(53).fill(new Array(7).fill(0)),
-	"RANDOM 6": new Array(53).fill(new Array(7).fill(0)),
-	"RANDOM 7": new Array(53).fill(new Array(7).fill(0)),
+	"RANDOM 1": new Array(371).fill(0),
+	"RANDOM 2": new Array(371).fill(0),
+	"RANDOM 3": new Array(371).fill(0),
+	"RANDOM 4": new Array(371).fill(0),
+	"RANDOM 5": new Array(371).fill(0),
+	"RANDOM 6": new Array(371).fill(0),
+	"RANDOM 7": new Array(371).fill(0),
 }
 
 /* Advances stored color for rect x */
@@ -74,6 +75,30 @@ function create_presets() {
 	}
 }
 
+function generate_svg() {
+	let git_grid = document.getElementById("git-grid"); 
+	let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.id = "svg";
+	svg.style.height = "88px";
+	svg.style.width = "738px";
+	for (let x = 0; x <= 728; x+=14) {
+		let g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+		g.setAttribute("transform", `translate(${x}, 0)`);
+		for (let y = 0; y <= 78; y+=13) {
+			let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+			rect.style.height = "10px";
+			rect.style.width = "10px";
+			rect.style.y = y + "px";
+			rect.style.fill = "#ebedf0";
+			rect.onclick = () => increment(rect);
+			rect.classList.add("day");
+			g.appendChild(rect);
+		}
+		svg.appendChild(g);
+	}
+	git_grid.appendChild(svg);
+}
+
 /* payment handling */
 function pay() {
 	console.log("Register click event -- pay button");
@@ -81,3 +106,4 @@ function pay() {
 
 // main
 create_presets();
+generate_svg();
