@@ -26,8 +26,6 @@ preset_map = {
   "RANDOM 3": new Array(371).fill(0),
   "RANDOM 4": new Array(371).fill(0),
   "RANDOM 5": new Array(371).fill(0),
-  "RANDOM 6": new Array(371).fill(0),
-  "RANDOM 7": new Array(371).fill(0),
 }
 
 /* Advances stored color for rect x */

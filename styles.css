@@ -16,6 +16,10 @@ body {
 }
 
 h1 {
+  background-color: #f6f8fa;
+  outline: 1px solid #e1e4e8;
+  margin: 0;
+  padding: 10px;
   color: rgb(36, 41, 46);
 }
 
@@ -28,8 +32,10 @@ p {
 }
 
 #wrapper {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
   margin: 0 auto;
-  width: 800px;
+  width: 900px;
   overflow: auto;
 }
 
@@ -43,8 +49,8 @@ p {
   margin: 0 auto;
 
   /* side-scrolling */
-    overflow-x: auto;
-    white-space: nowrap;
+  overflow-x: hidden;
+  white-space: nowrap;
 
   padding: 10px;
 }
@@ -53,10 +59,18 @@ p {
   display: inline;
 }
 
-#git-grid {
+#git-grid-div {
   width: 738px;
   height: 88px;
   margin: 0 auto;
+}
+
+rect.day {
+    shape-rendering: geometricPrecision;
+    outline: 1px solid rgba(27,31,35,.04);
+    outline-offset: -1px;
+    rx: 2;
+    ry: 2;
 }
 
 #pay {
@@ -71,7 +85,7 @@ p {
 }
 
 .button {
-  background-color: rgb(44, 151, 75);
+  background-color: #2ea44f;
 
   border-bottom-color: rgba(27, 31, 35, 0.15);
   border-bottom-left-radius: 6px;
@@ -128,4 +142,8 @@ p {
   vertical-align: middle;
   white-space: nowrap;
   -moz-appearance: none;
+}
+
+.button:hover {
+  background-color: #2c974b;
 }
