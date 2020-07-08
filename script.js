@@ -11,6 +11,8 @@
   paragraph grey: rgb(88, 96, 105);;
 */
 
+current_color_idx = null;
+
 color_map = {
   0: "#ebedf0",
   1: "#9be9a8",
@@ -38,13 +40,16 @@ function increment(rect, overflow) {
     coloridx = Math.min(coloridx, Object.keys(color_map).length - 1);
   }
 
+  setcolor(rect, coloridx);
+  return coloridx;
+}
+
+function setcolor(rect, coloridx) {
   rect.setAttribute("data-coloridx", coloridx);
   rect.style.fill = color_map[coloridx];
 }
-
 function clear(rect) {
-  rect.style.fill = color_map[0];
-  rect.setAttribute("data-coloridx", 0);
+  setcolor(rect, 0)
 }
 
 function apply_preset(key) {
@@ -98,9 +103,9 @@ function generate_svg() {
       rect.style.y = y + "px";
       rect.setAttribute("data-coloridx", 0);
       rect.style.fill = color_map[0];
-      rect.onclick = (e) => {
+      rect.onmousedown = (e) => {
         if (!e.shiftKey) {
-          increment(rect, true /* overflow */);
+          current_color_idx = increment(rect, true /* overflow */);
         } else {
           clear(rect);
         }
@@ -110,8 +115,13 @@ function generate_svg() {
         if (e.buttons !== 1) {
           return;
         }
+
         if (!e.shiftKey) {
-          increment(rect, false /* overflow */);
+          if (current_color_idx === null) {
+            current_color_idx = increment(rect, false /* overflow */);
+          } else {
+            setcolor(rect, current_color_idx, true /* at least */);
+          }
         } else if (e.shiftKey) {
           clear(rect);
         }
@@ -124,6 +134,12 @@ function generate_svg() {
   git_grid.appendChild(svg);
 }
 
+function global_mouse_handlers() {
+  document.body.addEventListener("mouseup", e => {
+    current_color_idx = null;
+  });
+}
+
 /* payment handling */
 function pay() {
   console.log("Register click event -- pay button");
@@ -132,3 +148,4 @@ function pay() {
 // main
 create_presets();
 generate_svg();
+global_mouse_handlers();
