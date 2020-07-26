@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Git Tattoo</title>
+    <script src="https://js.stripe.com/v3/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="styles.css"/>
   </head>
@@ -10,12 +11,37 @@
     <div id="payform_overlay" class="overlay">
       <div id="payform" class="payform card center">
         <div class="title">
-          <h3>Payment Info</h3>
+          <h3>Your Tattoo</h3>
         </div>
-        <p>some card stuff here</p>
+        <div style="padding: 10px 10px 0 10px">
+          <p class="small-caps">github information</p>
+          <p>
+            Enter your Github username and the email associated with that account.
+            We need this information to construct commits.
+          </p>
+          <div class="form-line">
+            <div class="form-kind">Username</div>
+            <input type="text" spellcheck="false" class="form-input" placeholder="Github Username">
+          </div>
+          <div class="form-line">
+            <div class="form-kind">Email</div>
+            <input type="text" spellcheck="false" class="form-input" placeholder="Github Email">
+          </div>
+
+          <p class="small-caps">payment information</p>
+          <div class="form-line">
+            <div class="form-kind">Card</div>
+            <div id="payform-stripe" class="form-input"></div>
+          </div>
+          <div class="center-content">
+            <button class="submit button">
+              Pay $5/month
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="wrapper card shadow center">
+    <div id="wrapper" class="wrapper card shadow center">
       <div class="title">
         <h1>Git Tattoo</h1>
       </div>
@@ -26,7 +52,7 @@
       </div>
       <div id="git-grid-div">
       </div>
-      <div class="tattoo">
+      <div class="tattoo center-content">
         <button class="button" onclick="show_payment_form()">
           Tattoo me
         </button>

@@ -11,8 +11,10 @@
   paragraph grey: rgb(88, 96, 105);;
 */
 
-current_color_idx = null;
-preset_preview_idx = 0;
+const stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+var current_color_idx = null;
+var preset_preview_idx = 0;
 
 color_map = {
   0: "#ebedf0",
@@ -191,7 +193,6 @@ function global_mouse_handlers() {
 function show_payment_form() {
   const payform_overlay = document.getElementById("payform_overlay");
   payform_overlay.classList.add("shown");
-  payform.style.top = "50%";
 }
 
 function setup_preview() {
@@ -207,15 +208,65 @@ function setup_preview() {
 }
 
 function setup_overlay() {
-  const payform = document.getElementById("payform");
+  // const payform = document.getElementById("payform");
   for (const overlay of document.getElementsByClassName("overlay")) {
-    overlay.onclick = () => {
-      overlay.classList.remove("shown");
-      payform.style.top = "0%";
+    overlay.onclick = (event) => {
+      if (event.target === overlay) {
+        overlay.classList.remove("shown");
+      }
     }
   }
 
-  payform.style.top = "0%";
+  for (const form_input of document.getElementsByClassName("form-input")) {
+    form_input.onfocus = () => {focus_form_input(form_input)};
+  }
+}
+
+function setup_stripe() {
+  // Create an instance of Elements.
+  var elements = stripe.elements();
+
+  // Custom styling can be passed to options when creating an Element.
+  // (Note that this demo uses a wider set of styles than the guide below.)
+  var style = {
+    base: {
+      color: '#32325d',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: 'antialiased',
+      fontSize: '14px',
+      '::placeholder': {
+        color: '#aab7c4'
+      }
+    },
+    invalid: {
+      color: '#fa755a',
+      iconColor: '#fa755a'
+    }
+  };
+
+  // Create an instance of the card Element.
+  var card = elements.create('card', {style: style});
+  card.on("focus", () => {focus_form_input(document.getElementById("payform-stripe"))});
+
+  // Add an instance of the card Element into the `card-element` <div>.
+  card.mount('#payform-stripe');
+}
+
+function focus_form_input(el) {
+  while (el.parentElement !== undefined) {
+    el = el.parentElement;
+    if (el.classList.contains("form-line")) {
+      focus_form_line(el);
+      return;
+    }
+  }
+}
+
+function focus_form_line(form_line) {
+  for (const other_form_line of document.getElementsByClassName("form-line")) {
+    other_form_line.classList.remove("focused-form-line");
+  }
+  form_line.classList.add("focused-form-line");
 }
 
 // main
@@ -224,3 +275,4 @@ generate_svg();
 global_mouse_handlers();
 setup_preview();
 setup_overlay();
+setup_stripe();
