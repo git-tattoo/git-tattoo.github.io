@@ -51,6 +51,8 @@ p {
   /* side-scrolling */
   overflow-x: hidden;
   white-space: nowrap;
+  display: flex;
+  justify-content: center;
 
   padding: 10px;
 }
@@ -81,6 +83,7 @@ rect.day {
 }
 
 #footer {
+  font-size: 10pt;
   text-align: center;
 }
 
