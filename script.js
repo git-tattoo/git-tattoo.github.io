@@ -12,6 +12,7 @@
 */
 
 current_color_idx = null;
+preset_preview_idx = 0;
 
 color_map = {
   0: "#ebedf0",
@@ -22,7 +23,7 @@ color_map = {
 }
 
 preset_map = {
-  "HIRE ME": [
+  "Hire Me": [
       "00000000000000000000000000000000000000000000000000000",
       "00004100410444440044441004444400000040004104444400000",
       "00004100410004100041004104100000000044044104100000000",
@@ -32,7 +33,7 @@ preset_map = {
       "00000000000000000000000000000000000000000000000000000",
   ],
 
-  "FADE": [
+  "Fade": [
       "00011122233344433322211100011122233344433322211100000",
       "00011122233344433322211100011122233344433322211100000",
       "00011122233344433322211100011122233344433322211100000",
@@ -42,7 +43,7 @@ preset_map = {
       "00011122233344433322211100011122233344433322211100000",
   ],
 
-  "EYES": [
+  "Eyes": [
       "00020000000000000000000000000000000000000000000020000",
       "00020000000333333333000000000000033333333300000020000",
       "00120000003111444111300000000000311144411130000021000",
@@ -52,7 +53,7 @@ preset_map = {
       "00020000000000000000000022220000000000000000000020000",
   ],
 
-  "MAZE": [
+  "Checkerboard": [
       "41414141414141414141414141414141414141414141414141414",
       "14141414141414141414141414141414141414141414141414141",
       "41414141414141414141414141414141414141414141414141414",
@@ -85,6 +86,12 @@ function clear(rect) {
   setcolor(rect, 0)
 }
 
+function click_preset_button(key) {
+  preset_preview_idx = null;
+  did_click_preset = true;
+  apply_preset(key);
+}
+
 function apply_preset(key) {
   let svg = document.getElementById("git-grid");
   let i = 0;
@@ -97,7 +104,7 @@ function apply_preset(key) {
           }, 3 * i + 100);
 
           setTimeout(() => {
-            weekday.style.fill = color_map[i % 5];
+            weekday.style.fill = color_map[i % Object.keys(color_map).length];
           }, 3 * i);
           i += 1;
         }
@@ -121,7 +128,8 @@ function create_presets() {
     let text = document.createTextNode(key);
     button.appendChild(text);
     // attach an onclick function
-    button.onclick = () => apply_preset(key);
+    button.onclick = () => click_preset_button(key);
+
     preset.appendChild(button);
   }
 }
@@ -180,11 +188,24 @@ function global_mouse_handlers() {
 }
 
 /* payment handling */
-function pay() {
-  console.log("Register click event -- pay button");
+function show_payment_form() {
+  alert('pay');
+}
+
+function setup_preview() {
+  let next_preview = () => {
+    if (preset_preview_idx !== null) {
+      let preset = Object.keys(preset_map)[preset_preview_idx];
+      apply_preset(preset);
+      preset_preview_idx = (preset_preview_idx + 1) % Object.keys(preset_map).length;
+    }
+  };
+  setInterval(next_preview, 3000);
+  next_preview();
 }
 
 // main
 create_presets();
 generate_svg();
 global_mouse_handlers();
+setup_preview();

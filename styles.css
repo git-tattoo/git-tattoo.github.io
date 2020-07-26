@@ -11,27 +11,34 @@
 */
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-    width: 98%;
+  background-color: #fcfdfd;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+               sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  width: 98%;
 }
 
-h1 {
+div.title {
   background-color: #f6f8fa;
   outline: 1px solid #e1e4e8;
   margin: 0;
-  padding: 10px;
+  padding: 0;
   color: rgb(36, 41, 46);
+  text-align: center;
 }
 
-h2 {
-  color: rgb(102, 102, 102);
+.title h1 {
+  margin: 0;
+  padding: 10px;
 }
 
-p {
-  color: rgb(88, 96, 105);;
+.subheading p {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: rgb(88, 96, 105);
 }
 
-#wrapper {
+div.wrapper {
   border: 1px solid #e1e4e8;
   border-radius: 6px;
   margin: 0 auto;
@@ -75,21 +82,13 @@ rect.day {
     ry: 2;
 }
 
-#pay {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  width: 100px;
-  margin: 0 auto;
-}
-
-#footer {
+div.footer {
   font-size: 10pt;
   text-align: center;
+  color: rgb(98, 106, 115);
 }
 
-.button {
-  background-color: #2ea44f;
-
+button {
   border-bottom-color: rgba(27, 31, 35, 0.15);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -149,4 +148,43 @@ rect.day {
 
 .button:hover {
   background-color: #2c974b;
+}
+
+.shadow {
+  -moz-box-shadow:    0 9px 6px -6px #ccc;
+  -webkit-box-shadow: 0 9px 6px -6px #ccc;
+  box-shadow:         0 9px 6px -6px #ccc;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+div.tattoo {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.tattoo button {
+  background-color: #2ea44f;
+}
+
+#presets button {
+  color: #24292e;
+  background-color: #fafbfc;
+  border-color: rgba(27,31,35,.15);
+  box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+  transition: background-color .2s cubic-bezier(.3,0,.5,1);
+}
+
+#presets button:hover {
+  background-color: #f3f4f6;
+  transition-duration: .1s;
 }
