@@ -34,13 +34,13 @@ preset_map = {
   ],
 
   "Fade": [
-      "00011122233344433322211100011122233344433322211100000",
-      "00011122233344433322211100011122233344433322211100000",
-      "00011122233344433322211100011122233344433322211100000",
-      "00011122233344433322211100011122233344433322211100000",
-      "00011122233344433322211100011122233344433322211100000",
-      "00011122233344433322211100011122233344433322211100000",
-      "00011122233344433322211100011122233344433322211100000",
+      "00011122233344433322211100011122233344433322211100011",
+      "00111222333444333222111000111222333444333222111000111",
+      "01112223334443332221110001112223334443332221110001112",
+      "11122233344433322211100011122233344433322211100011122",
+      "11222333444333222111000111222333444333222111000111222",
+      "12223334443332221110001112223334443332221110001112223",
+      "22233344433322211100011122233344433322211100011122233",
   ],
 
   "Eyes": [
@@ -189,7 +189,9 @@ function global_mouse_handlers() {
 
 /* payment handling */
 function show_payment_form() {
-  alert('pay');
+  const payform_overlay = document.getElementById("payform_overlay");
+  payform_overlay.classList.add("shown");
+  payform.style.top = "50%";
 }
 
 function setup_preview() {
@@ -204,8 +206,21 @@ function setup_preview() {
   next_preview();
 }
 
+function setup_overlay() {
+  const payform = document.getElementById("payform");
+  for (const overlay of document.getElementsByClassName("overlay")) {
+    overlay.onclick = () => {
+      overlay.classList.remove("shown");
+      payform.style.top = "0%";
+    }
+  }
+
+  payform.style.top = "0%";
+}
+
 // main
 create_presets();
 generate_svg();
 global_mouse_handlers();
 setup_preview();
+setup_overlay();
