@@ -17,9 +17,23 @@ body {
   width: 98%;
 }
 
-div.title {
+a {
+  color: #586069;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0366d6;
+  text-decoration: underline;
+}
+
+
+.title {
+  clear: both;
   background-color: #f6f8fa;
   outline: 1px solid #e1e4e8;
+  height: 60px;
+  line-height: 60px;
   margin: 0;
   padding: 0;
   color: rgb(36, 41, 46);
@@ -27,8 +41,11 @@ div.title {
 }
 
 .title h1, .title h3 {
-  margin: 0;
-  padding: 10px;
+  display: inline;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  padding: 10px 0 10px 0;
   font-weight: normal;
 }
 
@@ -56,7 +73,7 @@ div.submit {
   margin: 10px auto;
 }
 
-div.payform {
+.payform {
   width: 500px;
   -moz-box-shadow:    0 5px 10px -6px #000;
   -webkit-box-shadow: 0 5px 10px -6px #000;
@@ -64,7 +81,7 @@ div.payform {
   padding-bottom: 10px;
 }
 
-div.card {
+.card {
   background: white;
   border: 1px solid #e1e4e8;
   border-radius: 6px;
@@ -182,6 +199,22 @@ button {
   -moz-box-shadow:    0 9px 6px -6px #ccc;
   -webkit-box-shadow: 0 9px 6px -6px #ccc;
   box-shadow:         0 9px 6px -6px #ccc;
+}
+
+.headlink-left {
+  float: left;
+  text-align: left;
+  padding-left: 25px;
+  margin: auto;
+  width: 15%;
+}
+
+.headlink-right {
+  float: right;
+  text-align: right;
+  padding-right: 25px;
+  margin: auto;
+  width: 15%;
 }
 
 .center {

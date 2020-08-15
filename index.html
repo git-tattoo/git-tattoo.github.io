@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="payform_overlay" class="overlay">
-      <div id="payform" class="payform card center">
+      <form id="payform" class="payform card center">
         <div class="title">
           <h3>Your Tattoo</h3>
         </div>
@@ -31,7 +31,7 @@
           <p class="small-caps">payment information</p>
           <div class="form-line">
             <div class="form-kind">Card</div>
-            <div id="payform-stripe" class="form-input"></div>
+            <div id="stripe-card" class="form-input"></div>
           </div>
           <div class="center-content">
             <button class="submit button">
@@ -39,14 +39,16 @@
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
     <div id="wrapper" class="wrapper card shadow center">
       <div class="title">
+        <a class="headlink-left" style="visibility:hidden">.</a>
         <h1>Git Tattoo</h1>
+        <a class="headlink-right" href="faq.html">FAQ</a>
       </div>
       <div class="subheading">
-        <p>Custom, removable "tattoos" for your GitHub profile.</p>
+        <p>Custom, <a href="faq.html">removable</a> "tattoos" for your GitHub profile.</p>
       </div>
       <div id="presets">
       </div>

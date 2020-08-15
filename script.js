@@ -1,4 +1,3 @@
-
 /*  Color reference chart:
   0: #ebedf0
   1: #c6e48b -> #9be9a8
@@ -224,15 +223,15 @@ function setup_overlay() {
 
 function setup_stripe() {
   // Create an instance of Elements.
-  var elements = stripe.elements();
+  const elements = stripe.elements();
 
   // Custom styling can be passed to options when creating an Element.
   // (Note that this demo uses a wider set of styles than the guide below.)
-  var style = {
+  const style = {
     base: {
       color: '#32325d',
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSmoothing: 'antialiased',
+      fontFamily: 'Arial, sans-serif',
+      fontSmoothing: 'never',
       fontSize: '14px',
       '::placeholder': {
         color: '#aab7c4'
@@ -245,11 +244,15 @@ function setup_stripe() {
   };
 
   // Create an instance of the card Element.
-  var card = elements.create('card', {style: style});
-  card.on("focus", () => {focus_form_input(document.getElementById("payform-stripe"))});
+  const card = elements.create('card', {style: style});
+  card.on("focus", () => {focus_form_input(document.getElementById("stripe-card"))});
 
   // Add an instance of the card Element into the `card-element` <div>.
-  card.mount('#payform-stripe');
+  card.mount('#stripe-card');
+
+  // Setup payment
+  const payform = document.getElementById("payform");
+  payform.disabled = true;
 }
 
 function focus_form_input(el) {
