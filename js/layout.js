@@ -1,6 +1,13 @@
-function faq_init() {
-  for (const faq_link of document.getElementsByClassName("faq-link")) {
-    faq_link.onclick = () => show_overlay("faq-overlay");
+function overlay_clear() {
+
+}
+
+function overlay_links(ids) {
+  for (const id of ids) {
+    console.log(id);
+    for (const link of document.getElementsByClassName(`${id}-link`)) {
+      link.onclick = () => show_overlay(`${id}-overlay`);
+    }
   }
 }
 
@@ -39,5 +46,5 @@ export function layout_init() {
     form_input.onfocus = () => {focus_form_input(form_input)};
   }
 
-  faq_init();
+  overlay_links(["faq", "draw"]);
 }

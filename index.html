@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
+    <div id="draw-overlay" class="overlay">
+      <div class="card center">
+        <div class="title">
+          <h3>Drawing On The Grid</h3>
+        </div>
+        <div style="padding: 10px 10px 0 10px">
+          <p class="small-caps">drawing</p>
+          <p>
+            Clicking on on a cells will increment it's color by one, eventually
+            overflowing back to clear. Clicking and holding while dragging the mouse
+            draws the first cell's color on every cell that the mouse drags into.
+          </p>
+          <p class="small-caps">erasing</p>
+          <p>
+            Erase by holding shift while clicking (or while dragging) the mouse.
+          </p>
+          <p class="small-caps">selecting a preset</p>
+          <p>
+            The presets automatically cycle until you either click on a specific
+            preset or start drawing on the grid. Click on any of the presets at any
+            time to reset the tattoo to that preset.
+          </p>
+          <br/>
+        </div>
+      </div>
+    </div>
+
     <div id="faq-overlay" class="overlay">
       <div class="card center">
         <div class="title">
@@ -92,7 +119,8 @@
       <div class="subheading">
         <p>
           Custom, <a class="faq-link bluelink">removable</a>, tattoos for your
-          GitHub profile.
+          GitHub profile. Pick from the presets, or
+          <a class="draw-link bluelink">draw</a> directly on the grid!
         </p>
       </div>
       <div id="presets">
