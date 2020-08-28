@@ -8,8 +8,50 @@
     <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
-    <div id="payform_overlay" class="overlay">
-      <form id="payform" class="payform card center">
+    <div id="faq-overlay" class="overlay">
+      <div class="card center">
+        <div class="title">
+          <h3>Frequently Asked Questions</h3>
+        </div>
+        <div style="padding: 10px 10px 0 10px">
+          <p class="small-caps">how do i remove my tattoo</p>
+          <p>
+            To remove your tattoo, just leave the
+            <a href="https://github.com/Git-Tattooers">Git-Tattooers</a>
+            organization by going to your
+            <a href="https://github.com/settings/organizations">organization
+            settings</a>. Note that you cannot rejoin after you've left.
+          </p>
+          <p class="small-caps">i don't see my tattoo</p>
+          <p>
+            Be sure to accept the email invitation to the
+            <a href="https://github.com/Git-Tattooers">Git-Tattooers</a> organization,
+            check any spam folders. It may take up to 24 hours for a tattoo to appear
+            after accepting the invitation.
+          </p>
+          <p class="small-caps">can i make my tattoo repo private</p>
+          <p>
+            Unfortunately the only way for the tattoo to exist is to have a publicly
+            visible repo that is owned by an organization that you are a public member
+            of.
+          </p>
+          <p class="small-caps">how does this work</p>
+          <p>
+            A repository is constructed under the
+            <a href="https://github.com/Git-Tattooers">Git-Tattooers</a> organization.
+            Commits are then made in a pattern representing the tattoo with the
+            supplied email as the author. For these commits to show up on your
+            contribution calendar, you must be a member of the organization that owns
+            the repository, so you have to accept the invitation to the
+            <a href="https://github.com/Git-Tattooers">Git-Tattooers</a> organization.
+          </p>
+          <br/>
+        </div>
+      </div>
+    </div>
+
+    <div id="payform-overlay" class="overlay">
+      <form id="payform" class="card center">
         <div class="title">
           <h3>Your Tattoo</h3>
         </div>
@@ -45,10 +87,13 @@
       <div class="title">
         <a class="headlink-left" style="visibility:hidden">.</a>
         <h1>Git Tattoo</h1>
-        <a class="headlink-right" href="faq.html">FAQ</a>
+        <a class="faq-link headlink-right">FAQ</a>
       </div>
       <div class="subheading">
-        <p>Custom, <a href="faq.html">removable</a> "tattoos" for your GitHub profile.</p>
+        <p>
+          Custom, <a class="faq-link bluelink">removable</a>, tattoos for your
+          GitHub profile.
+        </p>
       </div>
       <div id="presets">
       </div>

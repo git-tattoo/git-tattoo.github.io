@@ -18,15 +18,18 @@ body {
 }
 
 a {
-  color: #586069;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, a:visited {
   color: #0366d6;
   text-decoration: underline;
+  cursor:pointer;
 }
 
+.bluelink {
+  color: #0366d6;
+}
 
 .title {
   clear: both;
@@ -73,20 +76,18 @@ div.submit {
   margin: 10px auto;
 }
 
-.payform {
-  width: 500px;
-  -moz-box-shadow:    0 5px 10px -6px #000;
-  -webkit-box-shadow: 0 5px 10px -6px #000;
-  box-shadow:         0 5px 10px -6px #000;
-  padding-bottom: 10px;
-}
-
 .card {
   background: white;
   border: 1px solid #e1e4e8;
   border-radius: 6px;
   margin: 0 auto;
   overflow: auto;
+
+  width: 500px;
+  -moz-box-shadow:    0 5px 10px -6px #000;
+  -webkit-box-shadow: 0 5px 10px -6px #000;
+  box-shadow:         0 5px 10px -6px #000;
+  padding-bottom: 10px;
 }
 
 div.wrapper {
@@ -210,6 +211,7 @@ button {
 }
 
 .headlink-left {
+  color: #586069;
   float: left;
   text-align: left;
   padding-left: 25px;
@@ -218,6 +220,7 @@ button {
 }
 
 .headlink-right {
+  color: #586069;
   float: right;
   text-align: right;
   padding-right: 25px;

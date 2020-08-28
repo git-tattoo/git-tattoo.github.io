@@ -1,3 +1,30 @@
+function faq_init() {
+  for (const faq_link of document.getElementsByClassName("faq-link")) {
+    faq_link.onclick = () => show_overlay("faq-overlay");
+  }
+}
+
+export function focus_form_input(el) {
+  while (el.parentElement !== undefined) {
+    el = el.parentElement;
+    if (el.classList.contains("form-line")) {
+      focus_form_line(el);
+      return;
+    }
+  }
+}
+
+export function focus_form_line(form_line) {
+  for (const other_form_line of document.getElementsByClassName("form-line")) {
+    other_form_line.classList.remove("focused-form-line");
+  }
+  form_line.classList.add("focused-form-line");
+}
+
+export function show_overlay(id) {
+  document.getElementById(id).classList.add("shown");
+}
+
 export function layout_init() {
   // const payform = document.getElementById("payform");
   for (const overlay of document.getElementsByClassName("overlay")) {
@@ -11,5 +38,6 @@ export function layout_init() {
   for (const form_input of document.getElementsByClassName("form-input")) {
     form_input.onfocus = () => {focus_form_input(form_input)};
   }
-}
 
+  faq_init();
+}

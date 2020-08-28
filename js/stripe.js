@@ -1,9 +1,10 @@
+import { focus_form_input, focus_form_line, show_overlay } from './layout.js';
+
 const stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 /* payment handling */
 function show_payment_form() {
-  const payform_overlay = document.getElementById("payform_overlay");
-  payform_overlay.classList.add("shown");
+  show_overlay("payform-overlay");
 }
 
 export function stripe_init() {
@@ -44,7 +45,7 @@ export function stripe_init() {
 
     // Create an instance of the card Element.
     const card = elements.create('card', {style: style});
-    card.on("focus", () => {focus_form_input(document.getElementById("stripe-card"))});
+    card.on("focus", () => focus_form_input(document.getElementById("stripe-card")));
 
     card.on("change", function (event) {
       // Disable the Pay button if there are no card details in the Element
@@ -60,19 +61,3 @@ export function stripe_init() {
   document.getElementById("tattoo-button").onclick = show_payment_form;
 }
 
-function focus_form_input(el) {
-  while (el.parentElement !== undefined) {
-    el = el.parentElement;
-    if (el.classList.contains("form-line")) {
-      focus_form_line(el);
-      return;
-    }
-  }
-}
-
-function focus_form_line(form_line) {
-  for (const other_form_line of document.getElementsByClassName("form-line")) {
-    other_form_line.classList.remove("focused-form-line");
-  }
-  form_line.classList.add("focused-form-line");
-}
