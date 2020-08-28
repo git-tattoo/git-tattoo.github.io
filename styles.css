@@ -125,6 +125,14 @@ rect.day {
     ry: 2;
 }
 
+.noselect {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 div.footer {
   font-size: 10pt;
   text-align: center;

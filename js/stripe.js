@@ -56,6 +56,8 @@ export function stripe_init() {
     // Add an instance of the card Element into the `card-element` <div>.
     card.mount('#stripe-card');
   })
+
+  document.getElementById("tattoo-button").onclick = show_payment_form;
 }
 
 function focus_form_input(el) {
