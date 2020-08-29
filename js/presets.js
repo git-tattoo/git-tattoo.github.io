@@ -1,4 +1,4 @@
-import { color_map } from './grid.js';
+import { setcolor } from './grid.js';
 
 let preset_preview_idx = 0;
 
@@ -57,11 +57,11 @@ function apply_preset(key) {
       for (const [weekday_idx, weekday] of week.childNodes.entries()) {
         if (weekday.nodeName != "#text") {
           setTimeout(() => {
-            weekday.style.fill = color_map[preset_map[key][weekday_idx][week_idx]];
+            setcolor(weekday, preset_map[key][weekday_idx][week_idx]);
           }, 3 * i + 100);
 
           setTimeout(() => {
-            weekday.style.fill = color_map[i % Object.keys(color_map).length];
+            setcolor(weekday, i % 5);
           }, 3 * i);
           i += 1;
         }

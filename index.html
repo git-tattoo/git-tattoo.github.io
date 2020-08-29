@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
-    <div id="draw-overlay" class="overlay">
+    <div id="draw-overlay" class="overlay center-content">
       <div class="card center">
         <div class="title">
           <h3>Drawing On The Grid</h3>
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div id="faq-overlay" class="overlay">
+    <div id="faq-overlay" class="overlay center-content">
       <div class="card center">
         <div class="title">
           <h3>Frequently Asked Questions</h3>
@@ -77,12 +77,20 @@
       </div>
     </div>
 
-    <div id="payform-overlay" class="overlay">
+    <div id="payform-overlay" class="overlay center-content">
       <form id="payform" class="card center">
         <div class="title">
           <h3>Your Tattoo</h3>
         </div>
         <div style="padding: 10px 10px 0 10px">
+          <div id="success">
+            <p id="success-text">
+            </p>
+          </div>
+          <div id="error">
+            <p id="error-text">
+            </p>
+          </div>
           <p class="small-caps">github information</p>
           <p>
             Enter your Github username and the email associated with that account.
@@ -90,11 +98,11 @@
           </p>
           <div class="form-line">
             <div class="form-kind">Username</div>
-            <input type="text" spellcheck="false" class="form-input" placeholder="Github Username">
+            <input id="username" type="text" spellcheck="false" class="form-input" placeholder="Github Username">
           </div>
           <div class="form-line">
             <div class="form-kind">Email</div>
-            <input type="text" spellcheck="false" class="form-input" placeholder="Github Email">
+            <input id="email" type="text" spellcheck="false" class="form-input" placeholder="Github Email">
           </div>
 
           <p class="small-caps">payment information</p>
@@ -107,41 +115,49 @@
               Pay $5
             </button>
           </div>
+          <div id="loading" class="center-content" style="height: 52px;">
+            <div id="loading-div">
+            </div>
+          </div>
         </div>
       </form>
     </div>
-    <div id="wrapper" class="wrapper card shadow center noselect">
-      <div class="title">
-        <a class="headlink-left" style="visibility:hidden">.</a>
-        <h1>Git Tattoo</h1>
-        <a class="faq-link headlink-right">FAQ</a>
-      </div>
-      <div class="subheading">
-        <p>
-          Custom, <a class="faq-link bluelink">removable</a>, tattoos for your
-          GitHub profile. Pick from the presets, or
-          <a class="draw-link bluelink">draw</a> directly on the grid!
-        </p>
-      </div>
-      <div id="presets">
-      </div>
-      <div id="git-grid-div">
-      </div>
-      <div class="tattoo center-content">
-        <button id="tattoo-button" class="button">
-          Tattoo me
-        </button>
-      </div>
-      <div class="footer">
-        <p>
-          Made by <i>Biznaga & Borbini</i>.
-        </p>
+
+    <div style="height: 100%;" class="center-content">
+      <div id="wrapper" class="wrapper card shadow noselect">
+        <div class="title">
+          <a class="headlink-left" style="visibility:hidden">.</a>
+          <h1>Git Tattoo</h1>
+          <a class="faq-link headlink-right">FAQ</a>
+        </div>
+        <div class="subheading">
+          <p>
+            Custom, <a class="faq-link bluelink">removable</a>, tattoos for your
+            GitHub profile. Pick from the presets, or
+            <a class="draw-link bluelink">draw</a> directly on the grid!
+          </p>
+        </div>
+        <div id="presets">
+        </div>
+        <div id="git-grid-div">
+        </div>
+        <div class="tattoo center-content">
+          <button id="tattoo-button" class="button">
+            Tattoo me
+          </button>
+        </div>
+        <div class="footer">
+          <p>
+            Made by <i>Biznaga & Borbini</i>.
+          </p>
+        </div>
       </div>
     </div>
     <script src="js/grid.js" type="module"></script>
     <script src="js/layout.js" type="module"></script>
     <script src="js/presets.js" type="module"></script>
     <script src="js/stripe.js" type="module"></script>
+    <script src="js/tattoo.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
   </body>
 </html>

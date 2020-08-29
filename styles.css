@@ -15,6 +15,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
                sans-serif, Apple Color Emoji, Segoe UI Emoji;
   width: 98%;
+  height: 98vh;
 }
 
 a {
@@ -25,6 +26,14 @@ a:hover, a:visited {
   color: #0366d6;
   text-decoration: underline;
   cursor:pointer;
+}
+
+#success-text {
+  color: #7bc96f;
+}
+
+#error-text {
+  color: #ff4545;
 }
 
 .bluelink {
@@ -64,6 +73,7 @@ a:hover, a:visited {
 .overlay .card p {
   color: rgb(68, 76, 85);
   margin: 5px 15px 0 15px;
+  vertical-align: middle;
 }
 
 .overlay .card .small-caps {
@@ -94,6 +104,7 @@ div.submit {
 
 div.wrapper {
   width: 900px;
+  overflow: hidden;
 }
 
 #presets {
@@ -233,10 +244,7 @@ button {
 .center {
   margin: 0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+
   transition: top 0.4s ease-in-out;
 }
 
@@ -250,6 +258,7 @@ button {
   z-index: -1;
   opacity: 0;
   transition: z-index 1.5s, opacity 0.2s ease-in-out;
+
 }
 
 .shown {
@@ -266,9 +275,11 @@ div.tattoo {
 div.center-content {
   margin: 0;
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .tattoo button, button.submit {

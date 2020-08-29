@@ -12,7 +12,7 @@ let current_color_idx = null;
   paragraph grey: rgb(88, 96, 105);;
 */
 
-export let color_map = {
+let color_map = {
   0: "#ebedf0",
   1: "#9be9a8",
   2: "#40c463",
@@ -40,7 +40,7 @@ function increment(rect, overflow) {
   return coloridx;
 }
 
-function setcolor(rect, coloridx) {
+export function setcolor(rect, coloridx) {
   rect.setAttribute("data-coloridx", coloridx);
   rect.style.fill = color_map[coloridx];
 }
@@ -63,8 +63,7 @@ export function grid_init() {
       rect.style.height = "10px";
       rect.style.width = "10px";
       rect.style.y = y + "px";
-      rect.setAttribute("data-coloridx", 0);
-      rect.style.fill = color_map[0];
+      setcolor(rect, 0);
       rect.onmousedown = (e) => {
         if (!e.shiftKey) {
           current_color_idx = increment(rect, true /* overflow */);
