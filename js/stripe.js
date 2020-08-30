@@ -84,7 +84,7 @@ function pay_with_card(username, email, tattoo, card, client_secret) {
       error(result.error.message);
     } else {
       console.log(result);
-      success(`Payment complete!`);
+      success(email);
 
       fetch(`${api}/paint_tattoo`, {
         method: "POST",

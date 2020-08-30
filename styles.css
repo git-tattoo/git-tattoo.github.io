@@ -28,12 +28,43 @@ a:hover, a:visited {
   cursor:pointer;
 }
 
+#small-caps-success {
+  color: #216e39;
+  font-size: 14pt;
+  font-variant: small-caps;
+  margin-top: 15px;
+}
+
+#small-caps-error {
+  color: #a62424;
+  font-size: 14pt;
+  font-variant: small-caps;
+  margin-top: 15px;
+}
+
 #success-text {
-  color: #7bc96f;
+  color: #009f2a;
 }
 
 #error-text {
   color: #ff4545;
+}
+
+#error {
+  background: #ffecf1;
+  border-radius: 5px;
+  padding-bottom: 8px;
+}
+
+#success {
+  background: #39c2641c;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+#email-note, #success-email {
+  font-weight: 600;
 }
 
 .bluelink {
@@ -132,11 +163,11 @@ div.wrapper {
 }
 
 rect.day {
-    shape-rendering: geometricPrecision;
-    outline: 1px solid rgba(27,31,35,.04);
-    outline-offset: -1px;
-    rx: 2;
-    ry: 2;
+  shape-rendering: geometricPrecision;
+  outline: 1px solid rgba(27,31,35,.04);
+  outline-offset: -1px;
+  rx: 2;
+  ry: 2;
 }
 
 .noselect {

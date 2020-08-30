@@ -59,6 +59,8 @@ export function layout_init() {
 
   overlay_links(["faq", "draw"]);
   loading_init();
+  document.getElementById("success").style.display = "none";
+  document.getElementById("error").style.display = "none";
 }
 
 function loading_init() {
@@ -96,13 +98,16 @@ function loading_animation() {
 export function error(msg) {
   loading(false);
   document.getElementById("error-text").innerHTML = msg;
-  document.getElementById("success-text").innerHTML = "";
+  document.getElementById("success").style.display = "none";
+  document.getElementById("error").style.display = "block";
 }
 
-export function success(msg) {
+export function success(email) {
   loading(false);
-  document.getElementById("error-text").innerHTML = "";
-  document.getElementById("success-text").innerHTML = msg;
+  document.getElementById("error").style.display = "none";
+  document.getElementById("payform").style.display = "none";
+  document.getElementById("success").style.display = "block";
+  document.getElementById("success-email").innerHTML = email;
 }
 
 let is_loading = false;

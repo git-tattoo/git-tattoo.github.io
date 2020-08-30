@@ -6,6 +6,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="styles.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
   </head>
   <body>
     <div id="draw-overlay" class="overlay center-content">
@@ -73,49 +74,57 @@
     </div>
 
     <div id="payform-overlay" class="overlay center-content">
-      <form id="payform" class="card center">
+      <div id="payform-card" class="card center">
         <div class="title">
           <h3>Your Tattoo</h3>
         </div>
         <div style="padding: 10px 10px 0 10px">
           <div id="success">
+            <p id="small-caps-success">payment complete</p>
             <p id="success-text">
+              Keep a look out for an email to <span id="success-email"></span> for
+              an invite to the Git-Tattooers organization in the next few minutes.
+              <span id="email-note">You must accept this invitation for the tattoo
+              to show.</span>
             </p>
           </div>
           <div id="error">
+            <p id="small-caps-error">error</p>
             <p id="error-text">
             </p>
           </div>
-          <p class="small-caps">github information</p>
-          <p>
-            Enter your Github username and the email associated with that account.
-            We need this information to construct commits.
-          </p>
-          <div class="form-line">
-            <div class="form-kind">Username</div>
-            <input id="username" type="text" spellcheck="false" class="form-input" placeholder="Github Username">
-          </div>
-          <div class="form-line">
-            <div class="form-kind">Email</div>
-            <input id="email" type="text" spellcheck="false" class="form-input" placeholder="Github Email">
-          </div>
+          <form id="payform">
+            <p class="small-caps">github information</p>
+            <p>
+              Enter your Github username and the email associated with that account.
+              We need this information to construct commits.
+            </p>
+            <div class="form-line">
+              <div class="form-kind">Username</div>
+              <input id="username" type="text" spellcheck="false" class="form-input" placeholder="Github Username">
+            </div>
+            <div class="form-line">
+              <div class="form-kind">Email</div>
+              <input id="email" type="text" spellcheck="false" class="form-input" placeholder="Github Email">
+            </div>
 
-          <p class="small-caps">payment information</p>
-          <div class="form-line">
-            <div class="form-kind">Card</div>
-            <div id="stripe-card" class="form-input"></div>
-          </div>
-          <div class="center-content">
-            <button id="pay-button" class="submit button">
-              Pay $5
-            </button>
-          </div>
+            <p class="small-caps">payment information</p>
+            <div class="form-line">
+              <div class="form-kind">Card</div>
+              <div id="stripe-card" class="form-input"></div>
+            </div>
+            <div class="center-content">
+              <button id="pay-button" class="submit button">
+                Pay $5
+              </button>
+            </div>
+          </form>
           <div id="loading" class="center-content" style="height: 52px;">
             <div id="loading-div">
             </div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
 
     <div style="height: 100%;" class="center-content">
