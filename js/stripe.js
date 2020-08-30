@@ -60,8 +60,7 @@ function stripe_postinit(data) {
   const form = document.getElementById("payform");
   form.onsubmit = (event) => {
     event.preventDefault();
-    get_tattoo();
-    return;
+    console.log(get_tattoo());
     pay_with_card(document.getElementById("username").value,
                   document.getElementById("email").value,
                   get_tattoo(),
@@ -79,11 +78,6 @@ function pay_with_card(username, email, tattoo, card, client_secret) {
     {
       payment_method: {card},
       receipt_email: email,
-      metadata: {
-        username,
-        email,
-        tattoo
-      }
     }
   ).then(result => {
     if (result.error) {
@@ -91,6 +85,16 @@ function pay_with_card(username, email, tattoo, card, client_secret) {
     } else {
       console.log(result);
       success(`Payment complete!`);
+
+      fetch(`${api}/paint_tattoo`, {
+        method: "POST",
+        body: JSON.stringify({
+          id: result.paymentIntent.id,
+          username,
+          email,
+          tattoo,
+        })
+      })
     }
   });
 }

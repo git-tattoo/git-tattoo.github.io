@@ -96,10 +96,12 @@ function loading_animation() {
 export function error(msg) {
   loading(false);
   document.getElementById("error-text").innerHTML = msg;
+  document.getElementById("success-text").innerHTML = "";
 }
 
 export function success(msg) {
   loading(false);
+  document.getElementById("error-text").innerHTML = "";
   document.getElementById("success-text").innerHTML = msg;
 }
 

@@ -10,6 +10,6 @@ export function get_tattoo() {
     }
   }
 
-  let tattoo = arrs.map(weekday => weekday.join(""));
-  console.log(tattoo);
+  // remove the leftmost column
+  return arrs.map(weekday => weekday.slice(1).join("")).join("|");
 }
