@@ -1,7 +1,7 @@
 import { error, success, focus_form_input, focus_form_line, loading, show_overlay } from './layout.js';
 import { get_tattoo } from './tattoo.js';
 
-const stripe = Stripe('pk_live_51H9IkdBov8cpWbK0VVbThqtSwaeB7C9JSATJ2CMM7VHNTgpaIsWKYxKolZSaZMDSPCPcZJIykSG1HiRCelzWXAwo00pex3cUF1');
+const stripe = Stripe('pk_test_51H9IkdBov8cpWbK0dibeYhICML2GZTiqpnb89DuuJlkUEcHlZ6BADH1TP1ShwT1twlBLPpxdc72dTgsVdtBiiZjr00RL1VQRO0');
 const api = "https://git-tattoo.herokuapp.com";
 
 /* payment handling */
