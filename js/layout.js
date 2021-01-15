@@ -37,6 +37,10 @@ export function show_overlay(id) {
 }
 
 export function layout_init() {
+  for (const el of document.getElementsByClassName("close-button")) {
+    el.onclick = clear_overlays;
+  }
+
   for (const overlay of document.getElementsByClassName("overlay")) {
     overlay.onclick = (event) => {
       if (event.target === overlay && !is_loading) {
